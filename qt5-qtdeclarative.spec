@@ -2,11 +2,11 @@
 
 Name:             qt5-qtdeclarative
 Version:          5.11.1
-Release:          5
+Release:          6 
 License:          LGPLv2 with exceptions or GPLv3 with exceptions
 Summary:          Qt5 module for declarative framework
 Url:              http://www.qt.io
-Source0:          https://download.qt.io/official_releases/qt/5.11/%{version}/submodules/qtdeclarative-everywhere-src-%{version}.tar.xz
+Source0:          https://download.qt.io/new_archive/qt/5.11/%{version}/submodules/qtdeclarative-everywhere-src-%{version}.tar.xz
 Source1:          qv4global_p-multilib.h
 Patch0001:        qtdeclarative-opensource-src-5.11.0-no_sse2.patch
 Obsoletes:        qt5-qtjsbackend < 5.2.0 qt5-qtdeclarative-render2d < 5.7.1-10
@@ -115,6 +115,9 @@ make check -k -C tests ||:
 
 
 %changelog
+* Mon Sep 14 2020  liuweibo <liuweibo10@huawei.com> - 5.11.1-6
+- Fix Source0
+
 * Sat Feb 22 2020 yanzhihua <yanzhihua4@huawei.com> - 5.11.1-5
 - modify python buildrequire
 
