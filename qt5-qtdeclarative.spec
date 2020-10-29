@@ -2,7 +2,7 @@
 
 Name:             qt5-qtdeclarative
 Version:          5.11.1
-Release:          6 
+Release:          7
 License:          LGPLv2 with exceptions or GPLv3 with exceptions
 Summary:          Qt5 module for declarative framework
 Url:              http://www.qt.io
@@ -11,7 +11,7 @@ Source1:          qv4global_p-multilib.h
 Patch0001:        qtdeclarative-opensource-src-5.11.0-no_sse2.patch
 Obsoletes:        qt5-qtjsbackend < 5.2.0 qt5-qtdeclarative-render2d < 5.7.1-10
 BuildRequires:    gcc-c++ qt5-rpm-macros >= %{version} qt5-qtbase-devel >= %{version}
-BuildRequires:    qt5-qtbase-private-devel qt5-qtxmlpatterns-devel >= %{version} python3 python2
+BuildRequires:    qt5-qtbase-private-devel qt5-qtxmlpatterns-devel >= %{version} python3
 %{?_qt5:Requires: %{_qt5} = %{_qt5_version}}
 
 %if 0%{?tests}
@@ -36,6 +36,9 @@ Obsoletes:        %{name}-static < %{version}-%{release} %{name}-examples < %{ve
 %setup -q -n qtdeclarative-everywhere-src-%{version}
 
 %build
+#HACK so calls to "python" get what we want
+ln -s %{__python3} python
+export PATH=`pwd`:$PATH
 
 %qmake_qt5
 
@@ -115,6 +118,9 @@ make check -k -C tests ||:
 
 
 %changelog
+* Tue Oct 27 2020 wangxiao <wangxiao65@huawei.com> - 5.11.1-7
+- delete python2 buildrequires
+
 * Mon Sep 14 2020  liuweibo <liuweibo10@huawei.com> - 5.11.1-6
 - Fix Source0
 
