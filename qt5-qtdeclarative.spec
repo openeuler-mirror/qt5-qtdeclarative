@@ -2,7 +2,7 @@
 
 Name:             qt5-qtdeclarative
 Version:          5.15.2
-Release:          1
+Release:          2
 License:          LGPLv2 with exceptions or GPLv3 with exceptions
 Summary:          Qt5 module for declarative framework
 Url:              http://www.qt.io
@@ -152,6 +152,9 @@ make check -k -C tests ||:
 
 
 %changelog
+* Mon Jan 7 2022 peijiankang <peijiankang@kylinos.cn> - 5.15.2-2
+- rm qt5-qtdeclarative-5.15.2-7.eln112.src.rpm
+
 * Wed Oct 13 2021 peijiankang <peijiankang@kylinos.cn> - 5.15.2-1
 - update to upstream version 5.15.2
 
