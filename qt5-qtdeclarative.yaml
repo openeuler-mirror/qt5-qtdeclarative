@@ -1,4 +1,4 @@
 version_control: github
-src_repo: qt/qtdeclarative
-tag_prefix: ^v
-seperator: .
+src_repo: https://code.qt.io/qt/qtdeclarative.git
+tag_prefix: "^v"
+separator: "."
