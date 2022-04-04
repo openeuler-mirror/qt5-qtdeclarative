@@ -2,7 +2,7 @@
 
 Name:             qt5-qtdeclarative
 Version:          5.15.2
-Release:          2
+Release:          3
 License:          LGPLv2 with exceptions or GPLv3 with exceptions
 Summary:          Qt5 module for declarative framework
 Url:              http://www.qt.io
@@ -36,7 +36,9 @@ Patch23:          0027-Document-that-StyledText-also-supports-nbsp-and-quot.patc
 Patch24:          0028-Support-apos-in-styled-text.patch
 Patch25:          %{name}-gcc11.patch
 Patch26:          qtdeclarative-5.15.0-FixMaxXMaxYExtent.patch
-
+%ifarch riscv64
+Patch50001:       Link-with-libatomic-on-riscv32-64.patch
+%endif
 
 Obsoletes:        qt5-qtjsbackend < 5.2.0 qt5-qtdeclarative-render2d < 5.7.1-10
 BuildRequires:    make 
@@ -152,6 +154,11 @@ make check -k -C tests ||:
 
 
 %changelog
+* Sun Apr 3 2022 Jingwiw <ixoote@gmail.com> - 5.15.2-3
+- add patch from bugreports.qt.io to build for riscv
+  BUG: QTBUG-84580
+  URL: https://bugreports.qt.io/browse/QTBUG-84580
+
 * Mon Jan 7 2022 peijiankang <peijiankang@kylinos.cn> - 5.15.2-2
 - rm qt5-qtdeclarative-5.15.2-7.eln112.src.rpm
 
